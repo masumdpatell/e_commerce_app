@@ -1,15 +1,14 @@
-import 'package:e_commerce_app/Controllers/CartController.dart';
-import 'package:e_commerce_app/Controllers/PopularProductController.dart';
-import 'package:e_commerce_app/Pages/Authentication/LoginScreen.dart';
-import 'package:e_commerce_app/Pages/Cart/CartHistory.dart';
-import 'package:e_commerce_app/Pages/Cart/CartPage.dart';
-import 'package:e_commerce_app/Pages/Food/PopularFoodDetail.dart';
-import 'package:e_commerce_app/Pages/Food/RecommendedFoodDetail.dart';
-import 'package:e_commerce_app/Pages/Home/HomePage.dart';
-import 'package:e_commerce_app/Pages/Home/MainFoodPage.dart';
-import 'package:e_commerce_app/Pages/Splash/SplashScreen.dart';
-import 'package:e_commerce_app/Routes/RouteHelper.dart';
-import 'package:e_commerce_app/utils/Colors.dart';
+import 'package:e_commerce_app/Controllers/popular_product_controller.dart';
+import 'package:e_commerce_app/Pages/Login/login_email.dart';
+import 'package:e_commerce_app/Pages/Cart/cart_history.dart';
+import 'package:e_commerce_app/Pages/Cart/cart_page.dart';
+import 'package:e_commerce_app/Pages/Food/popular_food_details.dart';
+import 'package:e_commerce_app/Pages/Food/recommended_food_details.dart';
+import 'package:e_commerce_app/Pages/Home/home_page.dart';
+import 'package:e_commerce_app/Pages/Home/main_food_page.dart';
+import 'package:e_commerce_app/Pages/Splash/splash_screen.dart';
+import 'package:e_commerce_app/Routes/route_helper.dart';
+import 'package:e_commerce_app/utils/colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -17,7 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'Controllers/RecommendedProductController.dart';
+import 'Controllers/recommended_product_controller.dart';
 import 'helper/Dependencies.dart' as dep;
 
 Future<void> main() async {
@@ -37,7 +36,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    Get.find<CartController>().getCartData();
+    // Get.find<CartController>().getCartData();
     return GetBuilder<PopularProductController>(
       builder: (_) {
         return GetBuilder<RecommendedProductController>(builder: (_) {

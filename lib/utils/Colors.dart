@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart' show Color, Colors;
 
-const Color textColor = Color(0xffccc7c5);
-const Color mainColor = Color(0xff89dad0);
+const Color mainColor = Color(0xFF71C9CE);
+const Color textColor = Color(0xFF252525);
+const Color textColor2 = Color(0xFF1E3C57);
+const Color pinBgColor = Color(0xFFEAEFF3);
+const Color buttonColor = Color(0xFF39B5E0);
+const Color iconBackGroundColor = Color(0xFFE3FDFD);
+const Color gradientColor1 = Color(0xFFA6E3E9);
+const Color gradientColor2 = Color(0xFFCBF1F5);
+const Color profileBgColor = Color(0xFF231F20);
+
+// E-Commerce App Colors...
+const Color buttonBackgroundColor = Color(0xfff7f6f4);
 const Color iconColor1 = Color(0xffffd28d);
 const Color iconColor2 = Color(0xff89dad0);
 const Color iconColor3 = Color(0xfffcab88);
 const Color paraColor = Color(0xff8f837f);
-const Color buttonBackgroundColor = Color(0xfff7f6f4);
 const Color signColor = Color(0xffa9a29f);
 const Color titleColor = Color(0xff5c524f);
 const Color mainBlackColor = Color(0xff332d2b);
 const Color yellowColor = Color(0xffffd379);
 
 // const Color imageShadeColor = Color(0xff8A0100);
-const Color imageShadeColor = Color(0xff5E4B4F);
+const Color imageShadeColor = Color(0xFF5E4B4F);
 
 const Color grey = Colors.grey;
 const Color white = Colors.white;

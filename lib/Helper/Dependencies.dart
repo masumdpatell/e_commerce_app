@@ -1,14 +1,15 @@
-import 'package:e_commerce_app/Controllers/CartController.dart';
-import 'package:e_commerce_app/Controllers/PopularProductController.dart';
-import 'package:e_commerce_app/Data/API/ApiClient.dart';
-import 'package:e_commerce_app/Data/Repository/CartRepo.dart';
-import 'package:e_commerce_app/Data/Repository/PopularProductRepo.dart';
-import 'package:e_commerce_app/utils/AppConstants.dart';
+import 'package:e_commerce_app/Controllers/popular_product_controller.dart';
+import 'package:e_commerce_app/Data/Repository/cart_repo.dart';
+import 'package:e_commerce_app/Data/Repository/popular_product_repo.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Controllers/RecommendedProductController.dart';
-import '../Data/Repository/RecommendedProductRepo.dart';
+import '../Controllers/recommended_product_controller.dart';
+import '../Controllers/cart_controller.dart';
+import '../Data/API/api_client.dart';
+import '../Controllers/recommended_product_controller.dart';
+import '../Data/Repository/recommended_product_repo.dart';
+import '../utils/app_constants.dart';
 
 Future<void> init() async {
   final sharedPreferences = await SharedPreferences.getInstance();
