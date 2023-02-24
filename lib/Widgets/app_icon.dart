@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:play_spots/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 
 class AppIcon extends StatelessWidget {

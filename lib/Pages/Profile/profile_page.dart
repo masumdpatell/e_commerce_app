@@ -217,8 +217,6 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                         onPressed: () async {
                                           Get.offNamed(
                                               RouteHelper.getInitial());
-                                          await Future.delayed(
-                                              const Duration(seconds: 1));
                                           setState(() {
                                             initialProfile = false;
                                           });

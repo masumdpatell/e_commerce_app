@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/Data/API/api_client.dart';
-import 'package:e_commerce_app/utils/app_constants.dart';
+import 'package:play_spots/Data/API/api_client.dart';
+import 'package:play_spots/utils/app_constants.dart';
 import 'package:get/get.dart';
 
 class RecommendedProductRepo extends GetxService {

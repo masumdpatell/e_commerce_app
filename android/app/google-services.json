@@ -1,42 +1,94 @@
 {
   "project_info": {
-    "project_number": "306021286972",
-    "project_id": "shopping-app-960b0",
-    "storage_bucket": "shopping-app-960b0.appspot.com"
+    "project_number": "861219881758",
+    "firebase_url": "https://play-sports-2364a-default-rtdb.firebaseio.com",
+    "project_id": "play-sports-2364a",
+    "storage_bucket": "play-sports-2364a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:306021286972:android:5258d332b90c7ac18baf39",
+        "mobilesdk_app_id": "1:861219881758:android:acfa5d800c14914b7dbf0f",
         "android_client_info": {
-          "package_name": "com.example.e_commerce_app"
+          "package_name": "com.example.play_sports"
         }
       },
       "oauth_client": [
         {
-          "client_id": "306021286972-l4nlkfh87rhofu1feget6es26qs6ddbp.apps.googleusercontent.com",
+          "client_id": "861219881758-4icqk1lqq7nkjll6a9pk7r8jh1b98tp0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.e_commerce_app",
+            "package_name": "com.example.play_sports",
             "certificate_hash": "792ce0e4ee69c493834da67cc50926a167e047a2"
           }
         },
         {
-          "client_id": "306021286972-ourhmr4f0v0qtaqlhgs94o6rvtvv5hmr.apps.googleusercontent.com",
+          "client_id": "861219881758-dsphlr9lj7nr099du9qjgrgdefqvbsuf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDudfHAileSGZlwIlx8_V8p82-XXFJzhoA"
+          "current_key": "AIzaSyCV1m5US-GtAgGhwjGFR3XKCKO2KcUl2pw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "306021286972-ourhmr4f0v0qtaqlhgs94o6rvtvv5hmr.apps.googleusercontent.com",
+              "client_id": "861219881758-dsphlr9lj7nr099du9qjgrgdefqvbsuf.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "861219881758-gf48tjn900nn3p7mvi4stupeguuapg4u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.playSports"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:861219881758:android:6295bb19b28036167dbf0f",
+        "android_client_info": {
+          "package_name": "com.example.play_spots"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "861219881758-mf593501dctaegjlph3dfhmjj8k4ii3h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.play_spots",
+            "certificate_hash": "792ce0e4ee69c493834da67cc50926a167e047a2"
+          }
+        },
+        {
+          "client_id": "861219881758-dsphlr9lj7nr099du9qjgrgdefqvbsuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCV1m5US-GtAgGhwjGFR3XKCKO2KcUl2pw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "861219881758-dsphlr9lj7nr099du9qjgrgdefqvbsuf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "861219881758-gf48tjn900nn3p7mvi4stupeguuapg4u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.playSports"
+              }
             }
           ]
         }

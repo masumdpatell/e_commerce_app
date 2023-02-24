@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
-import 'package:e_commerce_app/Pages/Login/login_screen.dart';
+import 'package:play_spots/Pages/Login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -333,7 +333,7 @@ class _MyVerifyState extends State<MyVerify> {
                       filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                       child: Lottie.asset("assets/lottie/successful.json")),
                 )
-              : Container()
+              : Container(),
         ],
       ),
     );

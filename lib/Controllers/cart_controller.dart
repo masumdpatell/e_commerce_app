@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Data/Repository/cart_repo.dart';
-import 'package:e_commerce_app/Models/product_model.dart';
-import 'package:e_commerce_app/utils/colors.dart';
+import 'package:play_spots/Data/Repository/cart_repo.dart';
+import 'package:play_spots/Models/product_model.dart';
+import 'package:play_spots/utils/colors.dart';
 import 'package:get/get.dart';
 
 import '../Models/cart_model.dart';

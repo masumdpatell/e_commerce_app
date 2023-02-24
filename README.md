@@ -1,4 +1,4 @@
-# e_commerce_app
+# play_spots
 
 A new Flutter project.
 

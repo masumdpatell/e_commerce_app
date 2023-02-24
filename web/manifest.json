@@ -1,6 +1,6 @@
 {
-    "name": "e_commerce_app",
-    "short_name": "e_commerce_app",
+    "name": "play_spots",
+    "short_name": "play_spots",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

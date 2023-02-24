@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Widgets/small_text.dart';
-import 'package:e_commerce_app/utils/colors.dart';
-import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:play_spots/Widgets/small_text.dart';
+import 'package:play_spots/utils/colors.dart';
+import 'package:play_spots/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

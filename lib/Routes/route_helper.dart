@@ -1,13 +1,13 @@
-import 'package:e_commerce_app/Pages/Login/login_email.dart';
-import 'package:e_commerce_app/Pages/Cart/cart_page.dart';
-import 'package:e_commerce_app/Pages/Food/popular_food_details.dart';
-import 'package:e_commerce_app/Pages/Food/recommended_food_details.dart';
-import 'package:e_commerce_app/Pages/Home/home_page.dart';
-import 'package:e_commerce_app/Pages/Login/login_screen.dart';
-import 'package:e_commerce_app/Pages/Login/verification.dart';
-import 'package:e_commerce_app/Pages/Payment/razor_pay.dart';
-import 'package:e_commerce_app/Pages/Profile-Initial/profile_page.dart';
-import 'package:e_commerce_app/Pages/Splash/splash_screen.dart';
+import 'package:play_spots/Pages/Login/login_email.dart';
+import 'package:play_spots/Pages/Cart/cart_page.dart';
+import 'package:play_spots/Pages/Food/popular_food_details.dart';
+import 'package:play_spots/Pages/Food/recommended_food_details.dart';
+import 'package:play_spots/Pages/Home/home_page.dart';
+import 'package:play_spots/Pages/Login/login_screen.dart';
+import 'package:play_spots/Pages/Login/verification.dart';
+import 'package:play_spots/Pages/Payment/razor_pay.dart';
+import 'package:play_spots/Pages/Profile/profile_page.dart';
+import 'package:play_spots/Pages/Splash/splash_screen.dart';
 import 'package:get/get.dart';
 
 import '../Pages/Home/main_food_page.dart';

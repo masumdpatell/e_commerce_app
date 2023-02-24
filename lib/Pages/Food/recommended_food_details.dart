@@ -1,10 +1,10 @@
-import 'package:e_commerce_app/Controllers/popular_product_controller.dart';
-import 'package:e_commerce_app/Controllers/recommended_product_controller.dart';
-import 'package:e_commerce_app/Routes/route_helper.dart';
-import 'package:e_commerce_app/Widgets/big_text.dart';
-import 'package:e_commerce_app/Widgets/expandable_text_widget.dart';
-import 'package:e_commerce_app/utils/colors.dart';
-import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:play_spots/Controllers/popular_product_controller.dart';
+import 'package:play_spots/Controllers/recommended_product_controller.dart';
+import 'package:play_spots/Routes/route_helper.dart';
+import 'package:play_spots/Widgets/big_text.dart';
+import 'package:play_spots/Widgets/expandable_text_widget.dart';
+import 'package:play_spots/utils/colors.dart';
+import 'package:play_spots/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:e_commerce_app/Base/no_data_page.dart';
-import 'package:e_commerce_app/Routes/route_helper.dart';
-import 'package:e_commerce_app/Widgets/app_icon.dart';
-import 'package:e_commerce_app/Widgets/big_text.dart';
-import 'package:e_commerce_app/Widgets/small_text.dart';
-import 'package:e_commerce_app/main.dart';
-import 'package:e_commerce_app/utils/colors.dart';
-import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:play_spots/Base/no_data_page.dart';
+import 'package:play_spots/Routes/route_helper.dart';
+import 'package:play_spots/Widgets/app_icon.dart';
+import 'package:play_spots/Widgets/big_text.dart';
+import 'package:play_spots/Widgets/small_text.dart';
+import 'package:play_spots/main.dart';
+import 'package:play_spots/utils/colors.dart';
+import 'package:play_spots/utils/dimensions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';

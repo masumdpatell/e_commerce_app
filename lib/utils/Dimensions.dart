@@ -4,9 +4,9 @@ class Dimensions {
   static double screenHeight = Get.context!.height;
   static double screenWidth = Get.context!.width;
 
-  static double pageView = screenHeight / 2.64;
-  static double pageViewContainer = screenHeight / 3.84;
-  static double pageViewTextContainer = screenHeight / 7.03;
+  static double pageView = screenHeight / 7;
+  static double pageViewContainer = screenHeight / 7.8;
+  static double pageViewTextContainer = screenHeight / 10;
 
   static double height5 = screenHeight / 168.8;
   static double height10 = screenHeight / 84.4;

@@ -1,10 +1,11 @@
-import 'package:e_commerce_app/Widgets/big_text.dart';
-import 'package:e_commerce_app/Widgets/small_text.dart';
-import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:play_spots/Pages/Home/sports_group_button.dart';
+import 'package:play_spots/Widgets/big_text.dart';
+import 'package:play_spots/Widgets/small_text.dart';
+import 'package:play_spots/utils/dimensions.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:e_commerce_app/utils/colors.dart';
+import 'package:play_spots/utils/colors.dart';
 
 import 'food_page_body.dart';
 
@@ -18,59 +19,66 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
-    // print("current height => " + MediaQuery.of(context).size.height.toString());
-    // print("current width => " + MediaQuery.of(context).size.width.toString());
+    print("current height => " + MediaQuery.of(context).size.height.toString());
+    print("current width => " + MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: Column(
         children: [
           Container(
             child: Container(
-                margin: EdgeInsets.only(
-                  top: Dimensions.height45,
-                  bottom: Dimensions.height15,
-                ),
-                padding: EdgeInsets.only(
-                  left: Dimensions.width20,
-                  right: Dimensions.width20,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      children: [
-                        BigText(
-                          text: "Gujarat",
-                          color: mainColor,
-                        ),
-                        Row(
+              margin: EdgeInsets.only(
+                top: Dimensions.height5 * 10,
+                bottom: Dimensions.height5 * 4,
+              ),
+              padding: EdgeInsets.only(
+                left: Dimensions.width20,
+                right: Dimensions.width20,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image.asset(
+                    "assets/image/logo_name.png",
+                    height: 30,
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
-                            SmallText(
-                              text: "Changa",
-                              color: black54,
+                            BigText(
+                              text: "Mumbai",
+                              color: textColor,
+                              size: 18,
                             ),
-                            Icon(
-                              Icons.arrow_drop_down_rounded,
+                            SmallText(
+                              text: "Maharashtra, India",
+                              color: black54,
+                              size: 10,
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                    Center(
-                      child: Container(
-                        width: Dimensions.width45,
-                        height: Dimensions.height45,
-                        child: Icon(
-                          Icons.search_rounded,
-                          color: white,
-                          size: Dimensions.iconSize24,
-                        ),
-                        decoration: BoxDecoration(
-                            color: mainColor,
-                            borderRadius:
-                                BorderRadius.circular(Dimensions.radius15)),
                       ),
-                    )
-                  ],
+                      Image.asset(
+                        "assets/image/placeholder.png",
+                        height: 24,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: SingleChildScrollView(
+                physics: BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 15),
+                  child: Container(color: white, child: SportsGroupButton()),
                 )),
           ),
           Expanded(

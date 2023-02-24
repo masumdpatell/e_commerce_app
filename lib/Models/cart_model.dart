@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/Models/product_model.dart';
+import 'package:play_spots/Models/product_model.dart';
 
 class CartModel {
   int? id;

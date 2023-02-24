@@ -1,6 +1,6 @@
-import 'package:e_commerce_app/Controllers/popular_product_controller.dart';
-import 'package:e_commerce_app/Data/Repository/cart_repo.dart';
-import 'package:e_commerce_app/Data/Repository/popular_product_repo.dart';
+import 'package:play_spots/Controllers/popular_product_controller.dart';
+import 'package:play_spots/Data/Repository/cart_repo.dart';
+import 'package:play_spots/Data/Repository/popular_product_repo.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

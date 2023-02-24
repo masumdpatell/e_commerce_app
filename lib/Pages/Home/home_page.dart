@@ -1,10 +1,10 @@
-import 'package:e_commerce_app/Pages/Cart/cart_history.dart';
-import 'package:e_commerce_app/Pages/Cart/cart_page.dart';
-import 'package:e_commerce_app/Pages/Home/food_page_body.dart';
-import 'package:e_commerce_app/Pages/Home/main_food_page.dart';
-import 'package:e_commerce_app/Pages/Profile-Initial/profile_page.dart';
-import 'package:e_commerce_app/main.dart';
-import 'package:e_commerce_app/utils/colors.dart';
+import 'package:play_spots/Pages/Cart/cart_history.dart';
+import 'package:play_spots/Pages/Cart/cart_page.dart';
+import 'package:play_spots/Pages/Home/food_page_body.dart';
+import 'package:play_spots/Pages/Home/main_food_page.dart';
+import 'package:play_spots/Pages/Profile/profile_page.dart';
+import 'package:play_spots/main.dart';
+import 'package:play_spots/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';

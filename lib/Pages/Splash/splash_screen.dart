@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:e_commerce_app/Routes/route_helper.dart';
-import 'package:e_commerce_app/utils/dimensions.dart';
+import 'package:play_spots/Routes/route_helper.dart';
+import 'package:play_spots/utils/dimensions.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

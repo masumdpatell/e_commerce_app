@@ -1,5 +1,5 @@
-import 'package:e_commerce_app/Data/Repository/popular_product_repo.dart';
-import 'package:e_commerce_app/Models/product_model.dart';
+import 'package:play_spots/Data/Repository/popular_product_repo.dart';
+import 'package:play_spots/Models/product_model.dart';
 import 'package:get/get.dart';
 
 import '../Data/Repository/recommended_product_repo.dart';
