@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>861219881758-rv7katd0r5ekvdnmrcn3vk23ajfquov7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.861219881758-rv7katd0r5ekvdnmrcn3vk23ajfquov7</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>861219881758-4icqk1lqq7nkjll6a9pk7r8jh1b98tp0.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAtter2kuRW85ctUZiYybVq6jjCfWbaijE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>861219881758</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.playspots</string>
+	<key>PROJECT_ID</key>
+	<string>play-sports-2364a</string>
+	<key>STORAGE_BUCKET</key>
+	<string>play-sports-2364a.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:861219881758:ios:5ac5d82c660377637dbf0f</string>
+	<key>DATABASE_URL</key>
+	<string>https://play-sports-2364a-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
