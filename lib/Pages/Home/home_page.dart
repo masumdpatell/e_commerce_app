@@ -1,7 +1,7 @@
 import 'package:play_spots/Pages/Cart/cart_history.dart';
 import 'package:play_spots/Pages/Cart/cart_page.dart';
-import 'package:play_spots/Pages/Home/food_page_body.dart';
-import 'package:play_spots/Pages/Home/main_food_page.dart';
+import 'package:play_spots/Pages/Home/spot_page_body.dart';
+import 'package:play_spots/Pages/Home/main_spot_page.dart';
 import 'package:play_spots/Pages/Profile/profile_page.dart';
 import 'package:play_spots/main.dart';
 import 'package:play_spots/utils/colors.dart';
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List pages = [
-    MainFoodPage(),
+    MainSpotPage(),
     CartHistory(),
     CartPage(),
     MyProfilePage(),
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             color: mainColor,
             activeColor: white,
             tabBackgroundColor: mainColor,
-            padding: EdgeInsets.all(12),
+            padding: EdgeInsets.all(Dimensions.all1 * 12),
             gap: 8,
             tabs: [
               GButton(

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:play_spots/Pages/Profile/profile_page.dart';
 import 'package:play_spots/Routes/route_helper.dart';
 import 'package:play_spots/utils/dimensions.dart';
 import 'package:flutter/animation.dart';
@@ -10,8 +12,9 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/utils.dart';
 
-import '../../Controllers/popular_product_controller.dart';
-import '../../Controllers/recommended_product_controller.dart';
+import '../../Controllers/popular_spot_controller.dart';
+import '../../Controllers/recommended_spot_controller.dart';
+import '../Login/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -24,6 +27,7 @@ class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
   late Animation<double> animation;
   late AnimationController controller;
+  final auth = FirebaseAuth.instance.currentUser;
 
   Future<void> _loadResource() async {
     await Get.find<PopularProductController>().getPopularProductList();
@@ -38,8 +42,38 @@ class _SplashScreenState extends State<SplashScreen>
         AnimationController(vsync: this, duration: const Duration(seconds: 1))
           ..forward();
     animation = CurvedAnimation(parent: controller, curve: Curves.linear);
-    Timer(const Duration(seconds: 1),
-        () => Get.offNamed(RouteHelper.getAuthentication()));
+    if (auth != null) {
+      setState(() {
+        initialProfile = false;
+        userName.text =
+            FirebaseAuth.instance.currentUser!.displayName.toString();
+        // phoneNumber.text =
+        //     FirebaseAuth.instance.currentUser!.phoneNumber.toString();
+        emailController.text =
+            FirebaseAuth.instance.currentUser!.email.toString();
+      });
+    }
+    Timer(
+        const Duration(seconds: 1),
+        () => auth == null
+            ? Get.offNamed(RouteHelper.getAuthentication())
+            : Get.offNamed(RouteHelper.getInitial())
+        // (() {
+        //     return Get.offNamed(RouteHelper.getAuthentication());
+        //   })
+        // : (() {
+        //     setState(() {
+        //       initialProfile = false;
+        //       userName.text =
+        //           FirebaseAuth.instance.currentUser!.displayName.toString();
+        //       phoneNumber.text =
+        //           FirebaseAuth.instance.currentUser!.phoneNumber.toString();
+        //       emailController.text =
+        //           FirebaseAuth.instance.currentUser!.email.toString();
+        //     });
+        //     return Get.offNamed(RouteHelper.getInitial());
+        //   })
+        );
   }
 
   @override

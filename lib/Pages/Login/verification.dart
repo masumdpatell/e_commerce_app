@@ -14,11 +14,13 @@ import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
 import '../../Routes/route_helper.dart';
+import '../../Utils/Dimensions.dart';
 import '../../Utils/colors.dart';
 
 bool verifyBtn = false;
 bool otpTimeOut = false;
 bool successfulAnimation = false;
+bool photoGoogle = false;
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
@@ -60,22 +62,22 @@ class _MyVerifyState extends State<MyVerify> {
     );
 
     final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-        fontSize: 20,
+      width: Dimensions.all1 * 56,
+      height: Dimensions.all1 * 56,
+      textStyle: TextStyle(
+        fontSize: Dimensions.all1 * 20,
         color: textColor2,
         fontWeight: FontWeight.w600,
       ),
       decoration: BoxDecoration(
-        border: Border.all(color: textColor2, width: 0.2),
-        borderRadius: BorderRadius.circular(10),
+        border: Border.all(color: textColor2, width: Dimensions.all1 * 0.2),
+        borderRadius: BorderRadius.circular(Dimensions.all1 * 10),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
       border: Border.all(color: mainColor),
-      borderRadius: BorderRadius.circular(10),
+      borderRadius: BorderRadius.circular(Dimensions.all1 * 10),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
@@ -98,6 +100,7 @@ class _MyVerifyState extends State<MyVerify> {
             Get.offNamed(RouteHelper.getAuthentication());
             loginBtnEnable = false;
             otpTimeOut = true;
+            loadingAnimation = false;
           },
           icon: const Icon(
             Icons.arrow_back_ios_rounded,
@@ -113,7 +116,12 @@ class _MyVerifyState extends State<MyVerify> {
             left: 0,
             right: 0,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(30, 100, 30, 0),
+              padding: EdgeInsets.fromLTRB(
+                Dimensions.all1 * 30,
+                Dimensions.all1 * 100,
+                Dimensions.all1 * 30,
+                0,
+              ),
               child: SingleChildScrollView(
                 child: Center(
                   child: Column(
@@ -124,40 +132,40 @@ class _MyVerifyState extends State<MyVerify> {
                         style: TextStyle(
                           fontFamily: GoogleFonts.varelaRound().fontFamily,
                           fontWeight: FontWeight.bold,
-                          fontSize: 24,
+                          fontSize: Dimensions.all1 * 24,
                           color: textColor,
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10),
+                        padding: EdgeInsets.only(top: Dimensions.all1 * 10),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             "Enter the verification code send to,",
                             style: TextStyle(
                               fontFamily: GoogleFonts.varelaRound().fontFamily,
-                              fontSize: 16,
+                              fontSize: Dimensions.all1 * 16,
                               color: textColor,
                             ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 3),
+                        padding: EdgeInsets.only(top: Dimensions.all1 * 3),
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
                             "${countrycode} ${phoneNumber.text}",
                             style: TextStyle(
                               fontFamily: GoogleFonts.varelaRound().fontFamily,
-                              fontSize: 16,
+                              fontSize: Dimensions.all1 * 16,
                               color: textColor,
                             ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: EdgeInsets.only(top: Dimensions.all1 * 40),
                         child: Pinput(
                           length: 6,
                           defaultPinTheme: defaultPinTheme,
@@ -170,16 +178,17 @@ class _MyVerifyState extends State<MyVerify> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 30),
+                        padding: EdgeInsets.only(top: Dimensions.all1 * 30),
                         child: SizedBox(
-                          height: 45,
-                          width: 330,
+                          height: Dimensions.all1 * 45,
+                          width: Dimensions.all1 * 330,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               elevation: 1,
                               backgroundColor: textColor2,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius:
+                                    BorderRadius.circular(Dimensions.all1 * 10),
                               ),
                             ),
                             onPressed: () async {
@@ -201,24 +210,21 @@ class _MyVerifyState extends State<MyVerify> {
                                 setState(() {
                                   successfulAnimation = false;
                                 });
-                              } catch (e) {
-                                ScaffoldMessenger.of(context)
-                                    .showSnackBar(snackBar);
-                              }
+                              } catch (e) {}
                             },
                             child: Text(
                               "Verify",
                               style: TextStyle(
                                   color: white,
                                   fontFamily: GoogleFonts.ubuntu().fontFamily,
-                                  fontSize: 18.0,
+                                  fontSize: Dimensions.all1 * 18.0,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 40),
+                        padding: EdgeInsets.only(top: Dimensions.all1 * 40),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -232,7 +238,7 @@ class _MyVerifyState extends State<MyVerify> {
                                     color: textColor,
                                     fontFamily:
                                         GoogleFonts.varelaRound().fontFamily,
-                                    fontSize: 18.0,
+                                    fontSize: Dimensions.all1 * 18.0,
                                     fontWeight: FontWeight.w500),
                               ),
                             ),
@@ -251,7 +257,7 @@ class _MyVerifyState extends State<MyVerify> {
                                               fontFamily:
                                                   GoogleFonts.varelaRound()
                                                       .fontFamily,
-                                              fontSize: 18.0,
+                                              fontSize: Dimensions.all1 * 18.0,
                                               fontWeight: FontWeight.w500),
                                         ),
                                         interval: Duration(milliseconds: 100),
@@ -269,7 +275,7 @@ class _MyVerifyState extends State<MyVerify> {
                                       color: textColor,
                                       fontFamily:
                                           GoogleFonts.varelaRound().fontFamily,
-                                      fontSize: 18.0,
+                                      fontSize: Dimensions.all1 * 18.0,
                                       fontWeight: FontWeight.w500),
                                 ),
                                 InkWell(
@@ -284,7 +290,7 @@ class _MyVerifyState extends State<MyVerify> {
                                             fontFamily:
                                                 GoogleFonts.varelaRound()
                                                     .fontFamily,
-                                            fontSize: 18.0,
+                                            fontSize: Dimensions.all1 * 18.0,
                                             fontWeight: otpTimeOut
                                                 ? null
                                                 : FontWeight.bold),

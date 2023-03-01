@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:play_spots/utils/Dimensions.dart';
 
 class NoDataPage extends StatelessWidget {
   final String text;
@@ -19,20 +20,20 @@ class NoDataPage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.1,
+          height: Dimensions.all1 * 0.1,
         ),
         Image.asset(
           imgPath,
-          height: MediaQuery.of(context).size.height * 0.22,
-          width: MediaQuery.of(context).size.width * 0.22,
+          height: Dimensions.all1 * 0.22,
+          width: Dimensions.all1 * 0.22,
         ),
         SizedBox(
-          height: MediaQuery.of(context).size.height * 0.03,
+          height: Dimensions.all1 * 0.03,
         ),
         Text(
           text,
           style: TextStyle(
-            fontSize: MediaQuery.of(context).size.height * 0.0175,
+            fontSize: Dimensions.all1 * 0.0175,
             color: Theme.of(context).disabledColor,
           ),
           textAlign: TextAlign.center,

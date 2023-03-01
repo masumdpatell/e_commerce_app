@@ -1,5 +1,5 @@
 import 'package:play_spots/Data/Repository/cart_repo.dart';
-import 'package:play_spots/Models/product_model.dart';
+import 'package:play_spots/Models/spot_model.dart';
 import 'package:play_spots/utils/colors.dart';
 import 'package:get/get.dart';
 

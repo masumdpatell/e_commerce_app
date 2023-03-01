@@ -1,7 +1,7 @@
 import 'package:play_spots/Pages/Login/login_email.dart';
 import 'package:play_spots/Pages/Cart/cart_page.dart';
-import 'package:play_spots/Pages/Food/popular_food_details.dart';
-import 'package:play_spots/Pages/Food/recommended_food_details.dart';
+import 'package:play_spots/Pages/Spot/popular_spot_details.dart';
+import 'package:play_spots/Pages/Spot/recommended_spot_details.dart';
 import 'package:play_spots/Pages/Home/home_page.dart';
 import 'package:play_spots/Pages/Login/login_screen.dart';
 import 'package:play_spots/Pages/Login/verification.dart';
@@ -10,7 +10,7 @@ import 'package:play_spots/Pages/Profile/profile_page.dart';
 import 'package:play_spots/Pages/Splash/splash_screen.dart';
 import 'package:get/get.dart';
 
-import '../Pages/Home/main_food_page.dart';
+import '../Pages/Home/main_spot_page.dart';
 
 class RouteHelper {
   static const String splashScreen = "/splash=screen";

@@ -11,6 +11,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
+import 'package:play_spots/Services/auth_service.dart';
 
 import '../../Data/Repository/cart_repo.dart';
 import '../../Routes/route_helper.dart';
@@ -21,8 +22,6 @@ import '../../utils/dimensions.dart';
 import '../Login/login_screen.dart';
 
 final formkey = GlobalKey<FormState>();
-TextEditingController emailController = TextEditingController();
-TextEditingController birthDate = TextEditingController();
 String genderController = "";
 String genderImg = "";
 bool initialProfile = true;
@@ -43,6 +42,7 @@ class MyProfilePage extends StatefulWidget {
 class _MyProfilePageState extends State<MyProfilePage> {
   final auth = FirebaseAuth.instance;
   final referenceDatabase = FirebaseDatabase.instance;
+  final user = FirebaseAuth.instance.currentUser!;
 
   get sharedPreferences => sharedPreferences;
 
@@ -53,36 +53,43 @@ class _MyProfilePageState extends State<MyProfilePage> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding:
-              const EdgeInsets.only(top: 60, left: 30, right: 30, bottom: 30),
+          padding: EdgeInsets.only(
+              top: Dimensions.all1 * 60,
+              left: Dimensions.all1 * 30,
+              right: Dimensions.all1 * 30,
+              bottom: Dimensions.all1 * 30),
           child: Column(
             children: [
               Container(
-                height: 120,
-                width: 120,
+                height: Dimensions.all1 * 120,
+                width: Dimensions.all1 * 120,
                 decoration: BoxDecoration(
-                  border: Border.all(color: mainColor, width: 5),
-                  borderRadius: BorderRadius.circular(200),
+                  border:
+                      Border.all(color: mainColor, width: Dimensions.all1 * 5),
+                  borderRadius: BorderRadius.circular(Dimensions.all1 * 200),
                   color: black,
                 ),
                 child: Container(
-                  height: 140,
-                  width: 140,
+                  height: Dimensions.all1 * 140,
+                  width: Dimensions.all1 * 140,
                   decoration: BoxDecoration(
-                    border: Border.all(color: gradientColor2, width: 4),
-                    borderRadius: BorderRadius.circular(200),
+                    border: Border.all(
+                        color: gradientColor2, width: Dimensions.all1 * 4),
+                    borderRadius: BorderRadius.circular(Dimensions.all1 * 200),
                     color: black,
                   ),
                   child: Container(
-                    height: 120,
-                    width: 120,
+                    height: Dimensions.all1 * 120,
+                    width: Dimensions.all1 * 120,
                     decoration: BoxDecoration(
-                      border: Border.all(color: white, width: 2),
-                      borderRadius: BorderRadius.circular(200),
+                      border:
+                          Border.all(color: white, width: Dimensions.all1 * 2),
+                      borderRadius:
+                          BorderRadius.circular(Dimensions.all1 * 200),
                       color: black,
                     ),
                     child: CircleAvatar(
-                      radius: 50,
+                      radius: Dimensions.all1 * 50,
                       backgroundColor: mainColor.withOpacity(0.5),
                       child: ClipOval(
                         child: InkWell(
@@ -113,9 +120,11 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                   );
                                 });
                           }),
-                          child: SvgPicture.asset(
-                            "assets/svg/man.svg",
-                          ),
+                          child: user.photoURL == null
+                              ? SvgPicture.asset(
+                                  "assets/svg/man.svg",
+                                )
+                              : Image.network(user.photoURL!),
                         ),
                         // decoration: BoxDecoration(
                         //     color: gradientColor1,
@@ -126,7 +135,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(top: Dimensions.all1 * 10),
                 child: GestureDetector(
                   onTap: (() {
                     showModalBottomSheet(
@@ -158,13 +167,13 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     style: TextStyle(
                         color: mainColor,
                         fontFamily: 'Ubuntu',
-                        fontSize: 16.0,
+                        fontSize: Dimensions.all1 * 16.0,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 10),
+                padding: EdgeInsets.only(top: Dimensions.all1 * 10),
                 child: Form(
                   key: formkey,
                   child: Column(
@@ -193,11 +202,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         children: [
                           Image.asset(
                             "assets/image/gender.png",
-                            height: 25,
-                            width: 25,
+                            height: Dimensions.all1 * 25,
+                            width: Dimensions.all1 * 25,
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 15),
+                            padding:
+                                EdgeInsets.only(left: Dimensions.all1 * 15),
                             child: _buildGenderSelection(),
                           )
                         ],
@@ -207,10 +217,11 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 25),
+                                  padding: EdgeInsets.only(
+                                      top: Dimensions.all1 * 25),
                                   child: SizedBox(
-                                    width: 130,
-                                    height: 35,
+                                    width: Dimensions.all1 * 130,
+                                    height: Dimensions.all1 * 35,
                                     child: InkWell(
                                       child: ElevatedButton(
                                         autofocus: true,
@@ -236,7 +247,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                               fontFamily:
                                                   GoogleFonts.varelaRound()
                                                       .fontFamily,
-                                              fontSize: 16.0,
+                                              fontSize: Dimensions.all1 * 16.0,
                                               fontWeight: FontWeight.w600),
                                         ),
                                       ),
@@ -246,18 +257,25 @@ class _MyProfilePageState extends State<MyProfilePage> {
                               ],
                             )
                           : Padding(
-                              padding: const EdgeInsets.only(top: 30),
+                              padding:
+                                  EdgeInsets.only(top: Dimensions.all1 * 30),
                               child: GestureDetector(
                                 onTap: () {
                                   auth.signOut().then((_) {
                                     Get.toNamed(
                                         RouteHelper.getAuthentication());
                                   });
+                                  FirebaseServices()
+                                      .signOutWithGoogle(context)
+                                      .then((_) {
+                                    Get.toNamed(
+                                        RouteHelper.getAuthentication());
+                                  });
+                                  ;
                                   setState(() {
                                     initialProfile = true;
                                   });
-                                  final user =
-                                      FirebaseAuth.instance.currentUser!;
+
                                   CartRepo(
                                       sharedPreferences: sharedPreferences
                                           .remove(AppConstants.CART_LIST));
@@ -271,7 +289,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
                                   ),
                                   decoration: BoxDecoration(
                                       color: mainColor,
-                                      borderRadius: BorderRadius.circular(10)),
+                                      borderRadius: BorderRadius.circular(
+                                          Dimensions.all1 * 10)),
                                   child: BigText(
                                     text: "Log Out",
                                     color: white,
@@ -297,12 +316,13 @@ InputDecoration _buildInputDecoration(String hint, IconData icon) {
     prefixIconConstraints: BoxConstraints(minWidth: 0),
     hintText: hint,
     hintStyle: TextStyle(
-        fontSize: 16, fontFamily: GoogleFonts.varelaRound().fontFamily),
+        fontSize: Dimensions.all1 * 16,
+        fontFamily: GoogleFonts.varelaRound().fontFamily),
     prefixIcon: Padding(
-      padding: const EdgeInsets.only(right: 12),
+      padding: EdgeInsets.only(right: Dimensions.all1 * 12),
       child: Icon(
         icon,
-        size: 28,
+        size: Dimensions.all1 * 28,
         color: textColor,
       ),
     ),
@@ -311,6 +331,7 @@ InputDecoration _buildInputDecoration(String hint, IconData icon) {
 
 Widget _buildUsername() {
   return TextFormField(
+    controller: userName,
     onChanged: (value) {
       print(value);
       if (value == null) {
@@ -322,7 +343,7 @@ Widget _buildUsername() {
     },
     inputFormatters: [LengthLimitingTextInputFormatter(15)],
     style: TextStyle(
-        fontSize: 16,
+        fontSize: Dimensions.all1 * 16,
         fontFamily: GoogleFonts.varelaRound().fontFamily,
         fontWeight: FontWeight.w400),
     textAlignVertical: TextAlignVertical.top,
@@ -346,7 +367,7 @@ Widget _buildPersonBio() {
     minLines: 1,
     maxLines: 5,
     style: TextStyle(
-        fontSize: 16,
+        fontSize: Dimensions.all1 * 16,
         fontFamily: GoogleFonts.varelaRound().fontFamily,
         fontWeight: FontWeight.w400),
     textAlignVertical: TextAlignVertical.top,
@@ -357,14 +378,16 @@ Widget _buildPersonBio() {
 
 Widget _buildContactNumber() {
   return TextFormField(
-    controller: phoneNumber,
+    controller: FirebaseAuth.instance.currentUser!.phoneNumber == null
+        ? null
+        : phoneNumber,
     keyboardType: TextInputType.phone,
     inputFormatters: [
       FilteringTextInputFormatter.digitsOnly,
       LengthLimitingTextInputFormatter(10)
     ],
     style: TextStyle(
-        fontSize: 16,
+        fontSize: Dimensions.all1 * 16,
         fontFamily: GoogleFonts.varelaRound().fontFamily,
         fontWeight: FontWeight.w400),
     textAlignVertical: TextAlignVertical.top,
@@ -389,7 +412,7 @@ Widget _buildEmail(BuildContext context) {
     keyboardType: TextInputType.emailAddress,
     inputFormatters: [],
     style: TextStyle(
-        fontSize: 16,
+        fontSize: Dimensions.all1 * 16,
         fontFamily: GoogleFonts.varelaRound().fontFamily,
         fontWeight: FontWeight.w400),
     textAlignVertical: TextAlignVertical.top,
@@ -430,7 +453,7 @@ Widget _buildBirthDate(BuildContext context) {
       // }
     },
     style: TextStyle(
-        fontSize: 16,
+        fontSize: Dimensions.all1 * 16,
         fontFamily: GoogleFonts.varelaRound().fontFamily,
         fontWeight: FontWeight.w400),
     textAlignVertical: TextAlignVertical.top,
@@ -465,7 +488,7 @@ Widget _buildGenderSelection() {
       borderRadius: BorderRadius.all(Radius.circular(10)),
       unselectedBorderColor: grey,
       selectedBorderColor: grey,
-      spacing: 10,
+      spacing: Dimensions.all1 * 10,
       unselectedColor: transparent,
       selectedColor: grey,
     ),

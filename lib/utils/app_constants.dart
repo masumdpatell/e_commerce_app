@@ -3,8 +3,8 @@ class AppConstants {
   static const int APP_VERSION = 1;
 
   static const String BASE_URL = "https://masumkimasti.github.io/mastjsonapi/";
-  static const String POPULAR_PRODUCT_URI = "/eateriaproduct.json";
-  static const String RECOMMENDED_PRODUCT_URI = "/eateriarecommended.json";
+  static const String POPULAR_PRODUCT_URI = "/testpopular.json";
+  static const String RECOMMENDED_PRODUCT_URI = "/testpopular.json";
   // static const String UPLOAD_URL = "/uploads/";
   static const String UPLOAD_URL =
       "https://res.cloudinary.com/dmhpakrik/image/upload/";

@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:group_button/group_button.dart';
 import 'package:play_spots/utils/colors.dart';
 
+import '../../Utils/Dimensions.dart';
+
 List buttons = [
   "Cricket",
   "Basketball",
@@ -38,10 +40,10 @@ Widget SportsGroupButton() {
           fontFamily: GoogleFonts.varelaRound().fontFamily,
           color: textColor.withAlpha(180),
         ),
-        borderRadius: BorderRadius.all(Radius.circular(7)),
+        borderRadius: BorderRadius.all(Radius.circular(Dimensions.all1 * 7)),
         unselectedBorderColor: mainColor,
         selectedBorderColor: mainColor,
-        spacing: 10,
+        spacing: Dimensions.all1 * 10,
         unselectedColor: transparent,
         selectedColor: mainColor,
       ),

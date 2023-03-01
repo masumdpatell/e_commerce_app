@@ -1,4 +1,4 @@
-import 'package:play_spots/Models/product_model.dart';
+import 'package:play_spots/Models/spot_model.dart';
 
 class CartModel {
   int? id;

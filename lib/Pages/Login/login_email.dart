@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:lottie/lottie.dart';
 import 'package:play_spots/Pages/Login/verification.dart';
-import 'package:play_spots/utils/colors.dart';
+import 'package:play_spots/utils/Colors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +15,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../Routes/route_helper.dart';
 import '../../utils/dimensions.dart';
 import '../Profile/profile_page.dart';
+import 'login_screen.dart';
 
 bool isSignUpScreen = true;
 bool isPasswordField = false;
@@ -22,6 +23,7 @@ bool isPassworduppercase = false;
 bool isPasswordnumber = false;
 bool isPasswordspecialcharacter = false;
 bool eyeTap = false;
+bool successfulAnimation = false;
 
 class LoginEmail extends StatefulWidget {
   @override
@@ -30,8 +32,8 @@ class LoginEmail extends StatefulWidget {
 
 class _LoginEmailState extends State<LoginEmail> {
   final auth = FirebaseAuth.instance;
-  late String emailLogIn, _passwordLogIn;
-  late String _emailSignUp, _passwordSignUp;
+  late String emailLogIn = "", _passwordLogIn = "";
+  late String _emailSignUp = "", _passwordSignUp = "";
 
   final storage = new FlutterSecureStorage();
 
@@ -44,6 +46,31 @@ class _LoginEmailState extends State<LoginEmail> {
       title: 'Wrong Credential',
       message: 'Re-Enter Email & Password !!',
       contentType: ContentType.failure,
+    ),
+  );
+
+  final snackBarSignUpScs = SnackBar(
+    dismissDirection: DismissDirection.down,
+    elevation: 0,
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: transparent,
+    content: AwesomeSnackbarContent(
+      title: 'Account Created',
+      message: 'Your account has been created successfully !!',
+      contentType: ContentType.success,
+    ),
+  );
+
+  final snackBarSignUpFail = SnackBar(
+    dismissDirection: DismissDirection.down,
+    elevation: 0,
+    duration: Duration(seconds: 2),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: transparent,
+    content: AwesomeSnackbarContent(
+      title: 'Invalid ID or Password',
+      message: 'Check your Email ID or Password Again !!',
+      contentType: ContentType.warning,
     ),
   );
 
@@ -89,124 +116,140 @@ class _LoginEmailState extends State<LoginEmail> {
       ),
       body: Stack(
         children: [
-          Positioned(
-            left: 0,
-            right: 0,
-            top: 0,
-            child: SingleChildScrollView(
-                physics: BouncingScrollPhysics(),
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(30, 30, 170, 0),
-                        child: Container(
-                          height: 35,
-                          width: 190,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(color: mainColor, width: 3),
-                            color: buttonBackgroundColor,
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              GestureDetector(
+          SingleChildScrollView(
+              physics: BouncingScrollPhysics(),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(Dimensions.all1 * 30,
+                          Dimensions.all1 * 10, Dimensions.all1 * 165, 0),
+                      child: Container(
+                        height: Dimensions.all1 * 35,
+                        width: Dimensions.all1 * 190,
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              BorderRadius.circular(Dimensions.all1 * 50),
+                          border: Border.all(
+                              color: mainColor, width: Dimensions.all1 * 3),
+                          color: buttonBackgroundColor,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isSignUpScreen = false;
+                                });
+                              },
+                              child: isSignUpScreen
+                                  ? Container(
+                                      height: Dimensions.all1 * 35,
+                                      width: Dimensions.all1 * 91,
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Log In",
+                                        style: TextStyle(
+                                          fontFamily:
+                                              GoogleFonts.ubuntu().fontFamily,
+                                          fontSize: Dimensions.all1 * 13.0,
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      height: Dimensions.all1 * 35,
+                                      width: Dimensions.all1 * 91,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          color: mainColor,
+                                          borderRadius: BorderRadius.circular(
+                                              Dimensions.all1 * 50)),
+                                      child: Text(
+                                        "Log In",
+                                        style: TextStyle(
+                                            color: black,
+                                            fontFamily:
+                                                GoogleFonts.ubuntu().fontFamily,
+                                            fontSize: Dimensions.all1 * 16.0,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                            ),
+                            GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    isSignUpScreen = false;
+                                    isSignUpScreen = true;
                                   });
                                 },
                                 child: isSignUpScreen
                                     ? Container(
-                                        height: 35,
-                                        width: 89,
-                                        alignment: Alignment.center,
-                                        child: Text("Log In",
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                            )),
-                                      )
-                                    : Container(
-                                        height: 35,
-                                        width: 89,
+                                        height: Dimensions.all1 * 35,
+                                        width: Dimensions.all1 * 91,
                                         alignment: Alignment.center,
                                         decoration: BoxDecoration(
                                             color: mainColor,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
+                                            borderRadius: BorderRadius.circular(
+                                                Dimensions.all1 * 50)),
                                         child: Text(
-                                          "Log In",
+                                          "Sign Up",
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              color: black,
+                                              fontFamily: GoogleFonts.ubuntu()
+                                                  .fontFamily,
+                                              fontSize: Dimensions.all1 * 16.0,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                      ),
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      isSignUpScreen = true;
-                                    });
-                                  },
-                                  child: isSignUpScreen
-                                      ? Container(
-                                          height: 35,
-                                          width: 89,
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                              color: mainColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
-                                          child: Text(
-                                            "Sign Up",
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold),
+                                      )
+                                    : Container(
+                                        height: Dimensions.all1 * 35,
+                                        width: Dimensions.all1 * 91,
+                                        alignment: Alignment.center,
+                                        child: Text(
+                                          "Sign Up",
+                                          style: TextStyle(
+                                            fontFamily:
+                                                GoogleFonts.ubuntu().fontFamily,
+                                            fontSize: Dimensions.all1 * 13.0,
                                           ),
-                                        )
-                                      : Container(
-                                          height: 35,
-                                          width: 89,
-                                          alignment: Alignment.center,
-                                          child: Text(
-                                            "Sign Up",
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                            ),
-                                          ),
-                                        ))
-                            ],
-                          ),
+                                        ),
+                                      ))
+                          ],
                         ),
                       ),
-                      isSignUpScreen
-                          ? Container(
-                              margin: EdgeInsets.fromLTRB(30, 60, 30, 0),
+                    ),
+                    isSignUpScreen
+                        ? Form(
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(
+                                  Dimensions.all1 * 30,
+                                  Dimensions.all1 * 30,
+                                  Dimensions.all1 * 30,
+                                  Dimensions.all1 * 30),
                               child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       "Sign Up",
                                       style: TextStyle(
-                                          fontSize: 17,
-                                          letterSpacing: 1.3,
+                                          fontSize: Dimensions.all1 * 17,
+                                          letterSpacing: Dimensions.all1 * 1.3,
                                           fontFamily: GoogleFonts.varelaRound()
                                               .fontFamily,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                        top: 5,
-                                        bottom: 5,
+                                      padding: EdgeInsets.only(
+                                        top: Dimensions.all1 * 5,
+                                        bottom: Dimensions.all1 * 5,
                                       ),
                                       child: Text(
                                           "Welcome to PlaySpots! Let`s Play Together..",
                                           style: TextStyle(
                                             color:
                                                 Colors.black.withOpacity(0.6),
-                                            fontSize: 14,
+                                            fontSize: Dimensions.all1 * 14,
                                             fontFamily:
                                                 GoogleFonts.varelaRound()
                                                     .fontFamily,
@@ -227,11 +270,13 @@ class _LoginEmailState extends State<LoginEmail> {
                                             labelStyle: TextStyle(
                                                 color: Colors.black
                                                     .withOpacity(0.7)),
-                                            hintStyle: TextStyle(fontSize: 16),
+                                            hintStyle: TextStyle(
+                                                fontSize: Dimensions.all1 * 16),
                                           )),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 5),
+                                      padding: EdgeInsets.only(
+                                          top: Dimensions.all1 * 5),
                                       child: TextField(
                                           obscureText: true,
                                           onChanged: (value) {
@@ -253,13 +298,15 @@ class _LoginEmailState extends State<LoginEmail> {
                                             labelStyle: TextStyle(
                                                 color: Colors.black
                                                     .withOpacity(0.7)),
-                                            hintStyle: TextStyle(fontSize: 16),
+                                            hintStyle: TextStyle(
+                                                fontSize: Dimensions.all1 * 16),
                                           )),
                                     ),
                                     isPasswordField
                                         ? AnimatedContainer(
                                             curve: Curves.easeInOut,
-                                            margin: EdgeInsets.only(top: 20),
+                                            margin: EdgeInsets.only(
+                                                top: Dimensions.all1 * 20),
                                             duration: Duration(seconds: 1),
                                             child: Column(
                                               crossAxisAlignment:
@@ -267,24 +314,32 @@ class _LoginEmailState extends State<LoginEmail> {
                                               children: [
                                                 Text("Make The Strong Password",
                                                     style: TextStyle(
-                                                        fontFamily: GoogleFonts
-                                                                .varelaRound()
-                                                            .fontFamily,
-                                                        letterSpacing: 1.7,
+                                                        fontFamily:
+                                                            GoogleFonts
+                                                                    .varelaRound()
+                                                                .fontFamily,
+                                                        letterSpacing:
+                                                            Dimensions.all1 *
+                                                                1.7,
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        fontSize: 13)),
+                                                        fontSize:
+                                                            Dimensions.all1 *
+                                                                13)),
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 20),
+                                                  padding: EdgeInsets.only(
+                                                      top:
+                                                          Dimensions.all1 * 20),
                                                   child: Row(
                                                     children: [
                                                       AnimatedContainer(
                                                         duration: Duration(
                                                             milliseconds: 500),
-                                                        height: 13,
-                                                        width: 13,
+                                                        height:
+                                                            Dimensions.all1 *
+                                                                13,
+                                                        width: Dimensions.all1 *
+                                                            13,
                                                         decoration: BoxDecoration(
                                                             color: isPassworduppercase
                                                                 ? mainColor
@@ -297,14 +352,18 @@ class _LoginEmailState extends State<LoginEmail> {
                                                                 : Border.all(
                                                                     color: Colors
                                                                         .grey,
-                                                                    width: 1.2),
+                                                                    width: Dimensions
+                                                                            .all1 *
+                                                                        1.2),
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
+                                                                BorderRadius.circular(
+                                                                    Dimensions
+                                                                            .all1 *
                                                                         10)),
                                                       ),
                                                       SizedBox(
-                                                        width: 20,
+                                                        width: Dimensions.all1 *
+                                                            20,
                                                       ),
                                                       Text(
                                                           "Contains at least one uppercase",
@@ -313,22 +372,30 @@ class _LoginEmailState extends State<LoginEmail> {
                                                                       .varelaRound()
                                                                   .fontFamily,
                                                               letterSpacing:
-                                                                  1.2,
-                                                              fontSize: 12))
+                                                                  Dimensions
+                                                                          .all1 *
+                                                                      1.2,
+                                                              fontSize:
+                                                                  Dimensions
+                                                                          .all1 *
+                                                                      12))
                                                     ],
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 15),
+                                                  padding: EdgeInsets.only(
+                                                      top:
+                                                          Dimensions.all1 * 15),
                                                   child: Row(
                                                     children: [
                                                       AnimatedContainer(
                                                         duration: Duration(
                                                             milliseconds: 500),
-                                                        height: 13,
-                                                        width: 13,
+                                                        height:
+                                                            Dimensions.all1 *
+                                                                13,
+                                                        width: Dimensions.all1 *
+                                                            13,
                                                         decoration: BoxDecoration(
                                                             color: isPasswordnumber
                                                                 ? mainColor
@@ -341,14 +408,19 @@ class _LoginEmailState extends State<LoginEmail> {
                                                                 : Border.all(
                                                                     color: Colors
                                                                         .grey,
-                                                                    width: 1.2),
+                                                                    width: Dimensions
+                                                                            .all1 *
+                                                                        1.2),
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
+                                                                BorderRadius.circular(
+                                                                    Dimensions
+                                                                            .all1 *
                                                                         10)),
                                                       ),
                                                       SizedBox(
-                                                        width: 20,
+                                                        width: Dimensions.all1 *
+                                                            Dimensions.all1 *
+                                                            20,
                                                       ),
                                                       Text(
                                                           "Contains at least one number",
@@ -357,22 +429,30 @@ class _LoginEmailState extends State<LoginEmail> {
                                                                       .varelaRound()
                                                                   .fontFamily,
                                                               letterSpacing:
-                                                                  1.2,
-                                                              fontSize: 12))
+                                                                  Dimensions
+                                                                          .all1 *
+                                                                      1.2,
+                                                              fontSize:
+                                                                  Dimensions
+                                                                          .all1 *
+                                                                      12))
                                                     ],
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 15),
+                                                  padding: EdgeInsets.only(
+                                                      top:
+                                                          Dimensions.all1 * 15),
                                                   child: Row(
                                                     children: [
                                                       AnimatedContainer(
                                                         duration: Duration(
                                                             milliseconds: 500),
-                                                        height: 13,
-                                                        width: 13,
+                                                        height:
+                                                            Dimensions.all1 *
+                                                                13,
+                                                        width: Dimensions.all1 *
+                                                            13,
                                                         decoration: BoxDecoration(
                                                             color: isPasswordspecialcharacter
                                                                 ? mainColor
@@ -385,14 +465,18 @@ class _LoginEmailState extends State<LoginEmail> {
                                                                 : Border.all(
                                                                     color: Colors
                                                                         .grey,
-                                                                    width: 1.2),
+                                                                    width: Dimensions
+                                                                            .all1 *
+                                                                        1.2),
                                                             borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
+                                                                BorderRadius.circular(
+                                                                    Dimensions
+                                                                            .all1 *
                                                                         10)),
                                                       ),
                                                       SizedBox(
-                                                        width: 20,
+                                                        width: Dimensions.all1 *
+                                                            20,
                                                       ),
                                                       Text(
                                                           "Contains at least one special character",
@@ -401,8 +485,13 @@ class _LoginEmailState extends State<LoginEmail> {
                                                                       .varelaRound()
                                                                   .fontFamily,
                                                               letterSpacing:
-                                                                  1.2,
-                                                              fontSize: 12))
+                                                                  Dimensions
+                                                                          .all1 *
+                                                                      1.2,
+                                                              fontSize:
+                                                                  Dimensions
+                                                                          .all1 *
+                                                                      12))
                                                     ],
                                                   ),
                                                 ),
@@ -410,180 +499,80 @@ class _LoginEmailState extends State<LoginEmail> {
                                             ),
                                           )
                                         : SizedBox(
-                                            height: 5,
+                                            height: Dimensions.all1 * 5,
                                           ),
                                     Center(
                                       child: Image.asset(
                                         "assets/image/signup.png",
-                                        scale: 4,
+                                        scale: Dimensions.all1 * 4,
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 50),
+                                      padding: EdgeInsets.only(
+                                          top: Dimensions.all1 *
+                                              Dimensions.all1 *
+                                              50),
                                       child: Material(
-                                        color: mainColor,
-                                        borderRadius: BorderRadius.circular(15),
+                                        color: textColor2,
+                                        borderRadius: BorderRadius.circular(
+                                            Dimensions.all1 *
+                                                Dimensions.all1 *
+                                                15),
                                         child: InkWell(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
-                                          onTap: () async {
-                                            auth
-                                                .createUserWithEmailAndPassword(
-                                              email: _emailSignUp,
-                                              password: _passwordSignUp,
-                                            )
-                                                .then((_) {
-                                              setState(() {
-                                                isSignUpScreen = false;
-                                              });
-                                              Get.offAndToNamed(
-                                                  RouteHelper.getEmailLogin());
-                                            });
-                                          },
-                                          child: AnimatedContainer(
-                                            duration: Duration(seconds: 1),
-                                            alignment: Alignment.center,
-                                            height: 60,
-                                            width: 400,
-                                            child: Text(
-                                              "Sign Up !! Let`s Go!",
-                                              style: TextStyle(
-                                                  color: buttonBackgroundColor,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily:
-                                                      GoogleFonts.varelaRound()
-                                                          .fontFamily,
-                                                  fontSize: 22),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  ]),
-                            )
-                          : Container(
-                              margin: EdgeInsets.fromLTRB(30, 60, 30, 0),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Log In",
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          letterSpacing: 1.3,
-                                          fontFamily: GoogleFonts.varelaRound()
-                                              .fontFamily,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: Text(
-                                          "Welcome to PlaySpots please fill the details below to Log In",
-                                          style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.6),
-                                            fontSize: 14,
-                                            fontFamily:
-                                                GoogleFonts.varelaRound()
-                                                    .fontFamily,
-                                          )),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 60),
-                                      child: TextField(
-                                          onChanged: (value) {
-                                            setState(() {
-                                              emailLogIn = value.trim();
-                                              emailController.text = emailLogIn;
-                                            });
-                                          },
-                                          keyboardType: TextInputType.text,
-                                          decoration: InputDecoration(
-                                            hintText: "Enter E-mail",
-                                            labelStyle: TextStyle(
-                                                color: Colors.black
-                                                    .withOpacity(0.7)),
-                                            labelText: "Email",
-                                            hintStyle: TextStyle(fontSize: 16),
-                                          )),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(top: 5),
-                                      child: TextField(
-                                        onChanged: (value) {
-                                          setState(() {
-                                            _passwordLogIn = value.trim();
-                                          });
-                                        },
-                                        // obscureText: eyeTap ? true : false,
-                                        decoration: InputDecoration(
-                                          // suffixIcon: Icon(Icons.remove_red_eye,),
-                                          hintText: "Enter Password",
-                                          labelStyle: TextStyle(
-                                              color: Colors.black
-                                                  .withOpacity(0.7)),
-                                          hintStyle: TextStyle(fontSize: 16),
-                                          labelText: "Password",
-                                        ),
-                                      ),
-                                    ),
-                                    Center(
-                                      child:
-                                          Image.asset("assets/image/login.png"),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 50, bottom: 30),
-                                      child: Material(
-                                        color: mainColor,
-                                        borderRadius: BorderRadius.circular(15),
-                                        child: InkWell(
-                                          borderRadius:
-                                              BorderRadius.circular(15),
+                                          borderRadius: BorderRadius.circular(
+                                              Dimensions.all1 *
+                                                  Dimensions.all1 *
+                                                  15),
                                           onTap: () async {
                                             try {
                                               await auth
-                                                  .signInWithEmailAndPassword(
-                                                email: emailLogIn,
-                                                password: _passwordLogIn,
+                                                  .createUserWithEmailAndPassword(
+                                                email: _emailSignUp,
+                                                password: _passwordSignUp,
                                               );
+
                                               setState(() {
                                                 successfulAnimation = true;
                                               });
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                      snackBarSignUpScs);
                                               await Future.delayed(
                                                   const Duration(
                                                       milliseconds: 1100));
-                                              // ignore: use_build_context_synchronously
-                                              Get.offNamed(
-                                                  RouteHelper.getProfile());
+
+                                              await Get.offNamed(
+                                                  RouteHelper.getEmailLogin());
                                               setState(() {
+                                                isSignUpScreen = false;
                                                 successfulAnimation = false;
                                               });
-                                              var user = FirebaseAuth
-                                                  .instance.currentUser!;
-                                              ref.child(user.uid);
-                                            } on FirebaseAuthException catch (e) {
-                                              print(
-                                                  'Failed with error code: ${e.code}');
-                                              print(e.message);
+                                            } catch (e) {
                                               ScaffoldMessenger.of(context)
-                                                ..showSnackBar(snackBar);
+                                                  .showSnackBar(
+                                                      snackBarSignUpFail);
                                             }
                                           },
                                           child: AnimatedContainer(
                                             duration: Duration(seconds: 1),
                                             alignment: Alignment.center,
-                                            height: 60,
-                                            width: 400,
+                                            height: Dimensions.all1 *
+                                                Dimensions.all1 *
+                                                60,
+                                            width: Dimensions.all1 *
+                                                Dimensions.all1 *
+                                                400,
                                             child: Text(
-                                              "Log In !! Let`s Go!",
+                                              "Sign Up !! Let`s Go!",
                                               style: TextStyle(
-                                                  color: buttonBackgroundColor,
-                                                  fontWeight: FontWeight.bold,
+                                                  color: white,
                                                   fontFamily:
-                                                      GoogleFonts.varelaRound()
+                                                      GoogleFonts.ubuntu()
                                                           .fontFamily,
-                                                  fontSize: 22),
+                                                  fontSize: Dimensions.all1 *
+                                                      Dimensions.all1 *
+                                                      22.0,
+                                                  fontWeight: FontWeight.bold),
                                             ),
                                           ),
                                         ),
@@ -591,10 +580,144 @@ class _LoginEmailState extends State<LoginEmail> {
                                     )
                                   ]),
                             ),
-                    ],
-                  ),
-                )),
-          ),
+                          )
+                        : Container(
+                            margin: EdgeInsets.fromLTRB(Dimensions.all1 * 30,
+                                Dimensions.all1 * 30, Dimensions.all1 * 30, 0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "Log In",
+                                    style: TextStyle(
+                                        fontSize: Dimensions.all1 * 17,
+                                        letterSpacing: Dimensions.all1 * 1.3,
+                                        fontFamily: GoogleFonts.varelaRound()
+                                            .fontFamily,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: Dimensions.all1 * 5),
+                                    child: Text(
+                                        "Welcome to PlaySpots please fill the details below to Log In",
+                                        style: TextStyle(
+                                          color: Colors.black.withOpacity(0.6),
+                                          fontSize: Dimensions.all1 * 14,
+                                          fontFamily: GoogleFonts.varelaRound()
+                                              .fontFamily,
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: Dimensions.all1 * 10),
+                                    child: TextField(
+                                        onChanged: (value) {
+                                          setState(() {
+                                            emailLogIn = value.trim();
+                                            emailController.text = emailLogIn;
+                                          });
+                                        },
+                                        keyboardType: TextInputType.text,
+                                        decoration: InputDecoration(
+                                          hintText: "Enter E-mail",
+                                          labelStyle: TextStyle(
+                                              color: Colors.black
+                                                  .withOpacity(0.7)),
+                                          labelText: "Email",
+                                          hintStyle: TextStyle(
+                                              fontSize: Dimensions.all1 * 16),
+                                        )),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: Dimensions.all1 * 5),
+                                    child: TextField(
+                                      onChanged: (value) {
+                                        setState(() {
+                                          _passwordLogIn = value.trim();
+                                        });
+                                      },
+                                      // obscureText: eyeTap ? true : false,
+                                      decoration: InputDecoration(
+                                        // suffixIcon: Icon(Icons.remove_red_eye,),
+                                        hintText: "Enter Password",
+                                        labelStyle: TextStyle(
+                                            color:
+                                                Colors.black.withOpacity(0.7)),
+                                        hintStyle: TextStyle(
+                                            fontSize: Dimensions.all1 * 16),
+                                        labelText: "Password",
+                                      ),
+                                    ),
+                                  ),
+                                  Center(
+                                    child:
+                                        Image.asset("assets/image/login.png"),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: Dimensions.all1 * 50,
+                                        bottom: Dimensions.all1 * 30),
+                                    child: Material(
+                                      color: textColor2,
+                                      borderRadius: BorderRadius.circular(
+                                          Dimensions.all1 * 15),
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(
+                                            Dimensions.all1 * 15),
+                                        onTap: () async {
+                                          try {
+                                            await auth
+                                                .signInWithEmailAndPassword(
+                                              email: emailLogIn,
+                                              password: _passwordLogIn,
+                                            );
+                                            setState(() {
+                                              successfulAnimation = true;
+                                            });
+                                            await Future.delayed(const Duration(
+                                                milliseconds: 1100));
+
+                                            Get.offNamed(
+                                                RouteHelper.getProfile());
+                                            setState(() {
+                                              successfulAnimation = false;
+                                            });
+                                            var user = FirebaseAuth
+                                                .instance.currentUser!;
+                                            ref.child(user.uid);
+                                          } on FirebaseAuthException catch (e) {
+                                            print(
+                                                'Failed with error code: ${e.code}');
+                                            print(e.message);
+                                            ScaffoldMessenger.of(context)
+                                              ..showSnackBar(snackBar);
+                                          }
+                                        },
+                                        child: AnimatedContainer(
+                                          duration: Duration(seconds: 1),
+                                          alignment: Alignment.center,
+                                          height: Dimensions.all1 * 60,
+                                          width: Dimensions.all1 * 400,
+                                          child: Text(
+                                            "Log In !! Let`s Go!",
+                                            style: TextStyle(
+                                                color: white,
+                                                fontFamily: GoogleFonts.ubuntu()
+                                                    .fontFamily,
+                                                fontSize: 22.0,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ]),
+                          ),
+                  ],
+                ),
+              )),
           successfulAnimation
               ? Center(
                   child: BackdropFilter(

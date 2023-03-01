@@ -1,14 +1,14 @@
-import 'package:play_spots/Controllers/popular_product_controller.dart';
+import 'package:play_spots/Controllers/popular_spot_controller.dart';
 import 'package:play_spots/Data/Repository/cart_repo.dart';
-import 'package:play_spots/Data/Repository/popular_product_repo.dart';
+import 'package:play_spots/Data/Repository/popular_spot_repo.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../Controllers/recommended_product_controller.dart';
+import '../Controllers/recommended_spot_controller.dart';
 import '../Controllers/cart_controller.dart';
 import '../Data/API/api_client.dart';
-import '../Controllers/recommended_product_controller.dart';
-import '../Data/Repository/recommended_product_repo.dart';
+import '../Controllers/recommended_spot_controller.dart';
+import '../Data/Repository/recommended_spot_repo.dart';
 import '../utils/app_constants.dart';
 
 Future<void> init() async {

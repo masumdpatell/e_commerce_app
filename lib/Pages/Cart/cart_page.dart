@@ -1,6 +1,6 @@
-import 'package:play_spots/Controllers/popular_product_controller.dart';
+import 'package:play_spots/Controllers/popular_spot_controller.dart';
 import 'package:play_spots/Models/cart_model.dart';
-import 'package:play_spots/Pages/Home/main_food_page.dart';
+import 'package:play_spots/Pages/Home/main_spot_page.dart';
 import 'package:play_spots/Routes/route_helper.dart';
 import 'package:play_spots/Widgets/app_icon.dart';
 import 'package:play_spots/Widgets/big_text.dart';
@@ -18,7 +18,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 
 import '../../Base/no_data_page.dart';
-import '../../Controllers/recommended_product_controller.dart';
+import '../../Controllers/recommended_spot_controller.dart';
 import '../../Controllers/cart_controller.dart';
 
 class CartPage extends StatefulWidget {
